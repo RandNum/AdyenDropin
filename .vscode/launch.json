@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "adyen-shop-checkout:HelloWorldFunction (python3.6)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "adyen-shop-checkout/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}
