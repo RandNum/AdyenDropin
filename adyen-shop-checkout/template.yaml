@@ -8,10 +8,10 @@ Description: >
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 5
   Api:
     Cors:
-      AllowOrigin: "'*''"
+      AllowOrigin: "'*'"
     Auth:
       ApiKeyRequired: false
   
@@ -20,7 +20,7 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: payment-methods/
-      Handler: app.lambda_handler
+      Handler: appy.lambda_handler
       Runtime: python3.6
       Events:
         GetPaymentMethods:
@@ -44,25 +44,10 @@ Resources:
   
 
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   PaymentMethodsFunctionAPI:
     Description: "API Gateway endpoint URL for Prod stage for PaymentsMethod function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/payment-methods/"
-  PaymentMethodsFunction:
-    Description: "PaymentsMethod Lambda Function ARN"
-    Value: !GetAtt PaymentMethodsFunction.Arn
-  PaymentMethodsFunctionIAMRole:
-    Description: "Implicit IAM Role created for PaymentsMethod function"
-    Value: !GetAtt PaymentMethodsFunctionRole.Arn
 
   PaymentsFunctionAPI:
     Description: "API Gateway endpoint URL for Prod stage for PaymentsMethod function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/payments/"
-  PaymentsFunction:
-    Description: "PaymentsMethod Lambda Function ARN"
-    Value: !GetAtt PaymentsFunction.Arn
-  PaymentsFunctionIAMRole:
-    Description: "Implicit IAM Role created for PaymentsMethod function"
-    Value: !GetAtt PaymentsFunctionRole.Arn

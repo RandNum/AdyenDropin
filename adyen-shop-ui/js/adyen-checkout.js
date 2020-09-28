@@ -63,7 +63,7 @@
 // console.log(2, checkout)
 // const dropin = checkout.create('dropin').mount('#dropin-container');
 
-const fetchPromise = fetch("https://pdv2gzx94a.execute-api.eu-central-1.amazonaws.com/Prod/payment-methods")
+const fetchPromise = fetch("https://21knxxq5o0.execute-api.eu-central-1.amazonaws.com/Prod/payment-methods")
 fetchPromise
 .then(res => {return res.json()})
 .then(response => {
@@ -79,7 +79,7 @@ fetchPromise
             console.log(3, state.data.paymentMethod)
             const data = state.data.paymentMethod;
             console.log(4, JSON.stringify(data))
-                fetch('https://pdv2gzx94a.execute-api.eu-central-1.amazonaws.com/Prod/payments', {
+                fetch('https://21knxxq5o0.execute-api.eu-central-1.amazonaws.com/Prod/payments', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
