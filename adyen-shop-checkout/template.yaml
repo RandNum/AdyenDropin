@@ -10,6 +10,8 @@ Globals:
   Function:
     Timeout: 3
   Api:
+    Cors:
+      AllowOrigin: "'*''"
     Auth:
       ApiKeyRequired: false
   
@@ -24,9 +26,9 @@ Resources:
         GetPaymentMethods:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /paymentmethods
-            Method: get
-            
+            Path: /payment-methods
+            Method: get  
+        
   PaymentsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -37,7 +39,7 @@ Resources:
         PostPayments:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /paynments
+            Path: /payments
             Method: post
   
 
@@ -47,7 +49,7 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   PaymentMethodsFunctionAPI:
     Description: "API Gateway endpoint URL for Prod stage for PaymentsMethod function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/paymentmethods/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/payment-methods/"
   PaymentMethodsFunction:
     Description: "PaymentsMethod Lambda Function ARN"
     Value: !GetAtt PaymentMethodsFunction.Arn

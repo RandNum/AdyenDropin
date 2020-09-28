@@ -63,15 +63,14 @@
 // console.log(2, checkout)
 // const dropin = checkout.create('dropin').mount('#dropin-container');
 
-const fetchPromise = fetch("https://52i5srxt1k.execute-api.eu-central-1.amazonaws.com/demo/paymentmethods")
+const fetchPromise = fetch("https://pdv2gzx94a.execute-api.eu-central-1.amazonaws.com/Prod/payment-methods")
 fetchPromise
 .then(res => {return res.json()})
 .then(response => {
-    
-    console.log(1, response.body)
+    console.log("Payment Methods:", response)
     
     const configuration = {
-        paymentMethodsResponse: response.body, // The `/paymentMethods` response from the server.
+        paymentMethodsResponse: response, // The `/paymentMethods` response from the server.
         clientKey: "test_CIXAPNBW2JERLEJ6GYYC3WBLVMO2HIZ3", // Web Drop-in versions before 3.10.1 use originKey instead of clientKey.
         locale: "en-US",
         environment: "test",
@@ -80,7 +79,7 @@ fetchPromise
             console.log(3, state.data.paymentMethod)
             const data = state.data.paymentMethod;
             console.log(4, JSON.stringify(data))
-                fetch('https://484xjman23.execute-api.eu-central-1.amazonaws.com/prod/payments', {
+                fetch('https://pdv2gzx94a.execute-api.eu-central-1.amazonaws.com/Prod/payments', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
