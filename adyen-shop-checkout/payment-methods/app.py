@@ -10,16 +10,12 @@ def lambda_handler(event, context):
       'content-type': 'application/json',
       'x-API-key': 'AQEyhmfxLI3MaBFLw0m/n3Q5qf3VaY9UCJ14XWZE03G/k2NFitRvbe4N1XqH1eHaH2AksaEQwV1bDb7kfNy1WIxIIkxgBw==-y3qzswmlmALhxaVPNjYf74bqPotG12HroatrKA066yE=-W+t7NF;s4}%=kUSD'
     }
-    response = requests.post(url, headers=headers, data = payload)
-    print(response.json())
-    
-
+    response = requests.post(url, headers=headers, data = payload)    
     
     returnObject = {
         'statusCode': 200,
-        'body': response.json()
+        'body': json.dumps(response.json())
     }
-    print(json.dumps(returnObject))
 
     return returnObject
     
