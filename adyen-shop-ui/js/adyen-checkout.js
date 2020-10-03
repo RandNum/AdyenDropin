@@ -78,11 +78,12 @@ fetchPromise
             // Your function calling your server to make the `/payments` request
             console.log(3, state.data.paymentMethod)
             const data = state.data.paymentMethod;
-            console.log(4, JSON.stringify(data))
+            //console.log(4, JSON.stringify(data))
                 fetch('https://21knxxq5o0.execute-api.eu-central-1.amazonaws.com/Prod/payments', {
                 method: 'POST', 
                 headers: {
-                    'Content-Type': 'application/json',
+                    //'Content-Type': 'application/json',
+                    //'Access-Control-Allow-Origin': '"*"',
                 },
                 body: JSON.stringify(data),
                 })
